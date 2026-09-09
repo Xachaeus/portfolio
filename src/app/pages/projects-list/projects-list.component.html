@@ -1,0 +1,48 @@
+<section class="page-section container">
+  <p class="eyebrow">Work</p>
+  <h1>Projects</h1>
+  <p class="page-intro">
+    A selection of things I've built, mostly open-source and hosted on
+    <a href="https://github.com/Xachaeus" target="_blank" rel="noopener">GitHub</a>.
+    Each project page is generated automatically from a structured data file.
+  </p>
+
+  <div class="filter-row">
+    <button
+      class="filter-chip"
+      [class.active]="activeFilter() === null"
+      (click)="setFilter(null)"
+    >
+      All ({{ allProjects.length }})
+    </button>
+    @for (tech of allTechnologies; track tech) {
+      <button
+        class="filter-chip"
+        [class.active]="activeFilter() === tech"
+        (click)="setFilter(tech)"
+      >
+        {{ tech }}
+      </button>
+    }
+  </div>
+
+  <div class="project-grid">
+    @for (project of filteredProjects(); track project.slug) {
+      <a [routerLink]="['/projects', project.slug]" class="card project-card">
+        <div class="project-card-top">
+          <span class="tag">{{ project.status }}</span>
+          <span class="text-muted mono date">{{ project.date | date: 'MMM yyyy' }}</span>
+        </div>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.tagline }}</p>
+        <div class="tech-row">
+          @for (tech of project.technologies; track tech) {
+            <span class="tech-pill">{{ tech }}</span>
+          }
+        </div>
+      </a>
+    } @empty {
+      <p class="text-muted">No projects match that filter.</p>
+    }
+  </div>
+</section>

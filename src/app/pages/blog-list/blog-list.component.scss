@@ -1,0 +1,49 @@
+.page-intro {
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+.post-list {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+}
+
+.post-card {
+  display: block;
+  padding: 26px 28px;
+  color: var(--text-primary);
+
+  &:hover {
+    border-color: var(--accent-600);
+    transform: translateY(-2px);
+    color: var(--text-primary);
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: 6px 0 10px;
+  }
+
+  p {
+    margin-bottom: 14px;
+  }
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+}
+
+.dot {
+  opacity: 0.6;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

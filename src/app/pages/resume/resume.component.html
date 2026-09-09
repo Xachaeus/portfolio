@@ -1,0 +1,154 @@
+<section class="page-section container">
+  <div class="resume-header">
+    <div>
+      <p class="eyebrow">Resume</p>
+      <h1>{{ resume.name }}</h1>
+      <p class="resume-title">{{ resume.title }}</p>
+      <p class="resume-summary">{{ resume.summary }}</p>
+
+      <div class="resume-meta">
+        @if (resume.location) {
+          <span>{{ resume.location }}</span>
+        }
+        @if (resume.email) {
+          <a [href]="'mailto:' + resume.email">{{ resume.email }}</a>
+        }
+        @for (link of resume.links; track link.url) {
+          <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }}</a>
+        }
+      </div>
+    </div>
+
+    @if (resume.resumeFileUrl) {
+      <a [href]="resume.resumeFileUrl" download class="btn btn-primary">Download PDF</a>
+    }
+  </div>
+
+  <div class="resume-grid">
+    <div class="resume-main">
+      <h2 class="block-title">Experience</h2>
+      <div class="timeline">
+        @for (job of resume.experience; track job.role + job.organization) {
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="job-header">
+                <div>
+                  <h3>{{ job.role }}</h3>
+                  <p class="org">{{ job.organization }}@if (job.location) { <span class="text-muted"> · {{ job.location }}</span> }</p>
+                </div>
+                <span class="date-range mono">{{ formatRange(job.startDate, job.endDate) }}</span>
+              </div>
+              <p class="job-summary">{{ job.summary }}</p>
+              @if (job.achievements && job.achievements.length) {
+                <ul class="achievements">
+                  @for (a of job.achievements; track a) {
+                    <li>{{ a }}</li>
+                  }
+                </ul>
+              }
+              @if (job.technologies && job.technologies.length) {
+                <div class="tech-row">
+                  @for (t of job.technologies; track t) {
+                    <span class="tech-pill">{{ t }}</span>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+
+
+      @if (resume.publications && resume.publications.length) {
+        <h2 class="block-title">Publications</h2>
+        <div class="timeline">
+          @for (pub of resume.publications; track pub.title) {
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content card">
+                <div class="job-header">
+                  <div>
+                    <a href="{{ pub.link }}" target="_blank">
+                      <h3>{{ pub.title }}</h3>
+                    </a>
+                    <p class="org">{{ formatAuthors(pub.authors) }}</p>
+                    <p class="org"> <span class="text-muted">{{ pub.conference }}, {{ pub.pages }} · DOI: {{ pub.DOI }}</span> </p>
+                  </div>
+                  <span class="date-range mono">{{ pub.year }}</span>
+                </div>
+                @if (pub.summary) {
+                  <p class="job-summary">{{ pub.summary }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+
+
+      @if (resume.recognitions && resume.recognitions.length) {
+        <h2 class="block-title">Recognitions</h2>
+        <div class="timeline">
+          @for (rec of resume.recognitions; track rec.title) {
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content card">
+                <div class="job-header">
+                  <div>
+                    <h3>{{ rec.title }}</h3>
+                    <p class="org">{{ rec.institution }}@if (rec.location) { <span class="text-muted"> · {{ rec.location }}</span> }</p>
+                  </div>
+                  <span class="date-range mono">{{ rec.date }}</span>
+                </div>
+                @if (rec.details) {
+                  <p class="job-summary">{{ rec.details }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+
+      @if (resume.education && resume.education.length) {
+        <h2 class="block-title">Education</h2>
+        <div class="timeline">
+          @for (edu of resume.education; track edu.degree) {
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content card">
+                <div class="job-header">
+                  <div>
+                    <h3>{{ edu.degree }}</h3>
+                    <p class="org">{{ edu.institution }}@if (edu.location) { <span class="text-muted"> · {{ edu.location }}</span> }</p>
+                  </div>
+                  <span class="date-range mono">{{ formatRange(edu.startDate, edu.endDate) }}</span>
+                </div>
+                @if (edu.details) {
+                  <p class="job-summary">{{ edu.details }}</p>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <aside class="resume-sidebar">
+      <h2 class="block-title">Skills</h2>
+      @for (group of resume.skills; track group.category) {
+        <div class="skill-group card">
+          <h3>{{ group.category }}</h3>
+          <div class="tech-row">
+            @for (skill of group.skills; track skill) {
+              <span class="tech-pill">{{ skill }}</span>
+            }
+          </div>
+        </div>
+      }
+    </aside>
+  </div>
+</section>

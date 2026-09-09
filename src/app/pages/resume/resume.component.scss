@@ -1,0 +1,177 @@
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.resume-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 2px;
+}
+
+.resume-title {
+  font-family: var(--font-mono);
+  color: var(--accent-400);
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.resume-summary {
+  max-width: 600px;
+}
+
+.resume-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+
+  a {
+    color: var(--text-secondary);
+  }
+
+  a:hover {
+    color: var(--accent-300);
+  }
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+}
+
+.block-title {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.resume-main .block-title:not(:first-child) {
+  margin-top: 40px;
+}
+
+.timeline {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  border-left: 1px solid var(--border-subtle);
+
+  &:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-500);
+  box-shadow: 0 0 0 4px rgba(78, 203, 143, 0.15);
+}
+
+.timeline-content {
+  padding: 20px 22px;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: nowrap;
+  margin-bottom: 8px;
+}
+
+.job-header a {
+  color: var(--text-primary);
+}
+
+.job-header h3 {
+  font-size: 1.05rem;
+  margin: 0 0 2px;
+}
+
+.job-header a h3 {
+  transition: all var(--transition-base);
+
+  &:hover {
+    transform: translateY(-3px);
+    color: var(--text-primary);
+  }
+}
+
+.org {
+  font-size: 0.88rem;
+  color: var(--accent-300);
+  margin: 0;
+}
+
+.date-range {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.job-summary {
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+}
+
+.achievements {
+  margin: 0 0 14px;
+  padding-left: 1.2em;
+  font-size: 0.9rem;
+
+  li {
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+  }
+}
+
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-pill {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.skill-group {
+  padding: 18px 20px;
+  margin-bottom: 14px;
+
+  h3 {
+    font-size: 0.92rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 860px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}

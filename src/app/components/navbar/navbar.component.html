@@ -1,0 +1,24 @@
+<header class="navbar" [class.is-scrolled]="isScrolled()">
+  <div class="container navbar-inner">
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <span class="brand-mark"><img style="filter: drop-shadow(0px 0px 12px rgb(133, 141, 119));" src="/Logo-64x64.png"/></span>
+      <span class="brand-name">Zachariah Sollenberger</span>
+    </a>
+
+    <nav class="nav-links" [class.open]="isMenuOpen()">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+      <a routerLink="/projects" routerLinkActive="active" (click)="closeMenu()">Projects</a>
+      <a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a>
+      <a routerLink="/resume" routerLinkActive="active" (click)="closeMenu()">Resume</a>
+      <a href="https://github.com/Xachaeus" target="_blank" rel="noopener" class="nav-github">
+        GitHub
+      </a>
+    </nav>
+
+    <button class="menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+<section class="page-section container">
+  <p class="eyebrow">Writing</p>
+  <h1>Blog</h1>
+  <p class="page-intro">
+    Notes on things I've built, problems I've run into, and what I learned fixing them.
+  </p>
+
+  <div class="post-list">
+    @for (post of posts; track post.slug) {
+      <a [routerLink]="['/blog', post.slug]" class="card post-card">
+        <div class="post-meta">
+          <span class="mono">{{ post.date | date: 'MMM d, yyyy' }}</span>
+          <span class="dot">·</span>
+          <span>{{ readingTime(post) }} min read</span>
+        </div>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt }}</p>
+        @if (post.tags && post.tags.length) {
+          <div class="tag-row">
+            @for (tag of post.tags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+        }
+      </a>
+    }
+  </div>
+</section>

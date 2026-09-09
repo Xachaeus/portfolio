@@ -1,0 +1,60 @@
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="eyebrow">Software Engineer · Open to work</p>
+    <h1>
+      Building the future of technology,<br/>
+      one hobby project at a time.
+    </h1>
+    <p class="hero-sub">
+      Welcome to my living portfolio! I share the projects I've built and the things
+      I've learned along the way.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/projects" class="btn btn-primary">View Projects</a>
+      <a routerLink="/resume" class="btn btn-secondary">See Resume</a>
+    </div>
+  </div>
+  <div class="hero-glow" aria-hidden="true"></div>
+</section>
+
+<section class="page-section container">
+  <div class="section-heading">
+    <h2>Featured Projects</h2>
+    <a routerLink="/projects" class="view-all">All projects ➔</a>
+  </div>
+
+  <div class="project-grid">
+    @for (project of featuredProjects; track project.slug) {
+      <a [routerLink]="['/projects', project.slug]" class="card project-card">
+        <div class="project-card-top">
+          <span class="tag">{{ project.status }}</span>
+          <span class="text-muted mono date">{{ project.date | date: 'MMM yyyy' }}</span>
+        </div>
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.tagline }}</p>
+        <div class="tech-row">
+          @for (tech of project.technologies.slice(0, 4); track tech) {
+            <span class="tech-pill">{{ tech }}</span>
+          }
+        </div>
+      </a>
+    }
+  </div>
+</section>
+
+<section class="page-section container">
+  <div class="section-heading">
+    <h2>From the Blog</h2>
+    <a routerLink="/blog" class="view-all">All posts ➔</a>
+  </div>
+
+  <div class="post-list">
+    @for (post of recentPosts; track post.slug) {
+      <a [routerLink]="['/blog', post.slug]" class="card post-card">
+        <span class="text-muted mono date">{{ post.date | date: 'MMM d, yyyy' }}</span>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt }}</p>
+      </a>
+    }
+  </div>
+</section>

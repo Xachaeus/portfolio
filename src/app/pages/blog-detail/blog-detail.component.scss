@@ -1,0 +1,98 @@
+.back-link {
+  display: inline-block;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+
+  &:hover {
+    color: var(--accent-300);
+  }
+}
+
+.post-header {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.post-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-top: 10px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.dot {
+  opacity: 0.6;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.post-body {
+  max-width: 720px;
+  font-size: 1.02rem;
+
+  :global(p),
+  ::ng-deep p {
+    color: var(--text-secondary);
+    margin-bottom: 1.1em;
+  }
+
+  ::ng-deep h2 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 1.8em 0 0.6em;
+  }
+
+  ::ng-deep ul {
+    margin: 0 0 1.1em;
+    padding-left: 1.3em;
+    color: var(--text-secondary);
+  }
+
+  ::ng-deep li {
+    margin-bottom: 0.4em;
+  }
+
+  ::ng-deep strong {
+    color: var(--text-primary);
+  }
+
+  ::ng-deep code {
+    background: var(--bg-2);
+    color: var(--accent-300);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+  }
+
+  ::ng-deep pre {
+    background: var(--bg-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 0 0 1.4em;
+  }
+
+  ::ng-deep pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-primary);
+  }
+}
+
+.not-found {
+  text-align: center;
+  padding-top: 96px;
+}

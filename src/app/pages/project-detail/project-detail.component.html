@@ -1,0 +1,59 @@
+@if (project) {
+  <section class="page-section container">
+    <a routerLink="/projects" class="back-link">← All projects</a>
+
+    <div class="detail-header">
+      <div>
+        <p class="eyebrow">{{ project.status }} · {{ project.date | date: 'MMMM yyyy' }}</p>
+        <h1>{{ project.name }}</h1>
+        <p class="tagline">{{ project.tagline }}</p>
+      </div>
+
+      <div class="detail-actions">
+        <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn btn-primary">
+          View on GitHub
+        </a>
+        @for (link of project.links; track link.url) {
+          <a [href]="link.url" target="_blank" rel="noopener" class="btn btn-secondary">
+            {{ iconFor(link.icon) }} {{ link.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="tech-row">
+      @for (tech of project.technologies; track tech) {
+        <span class="tech-pill">{{ tech }}</span>
+      }
+    </div>
+
+    <div class="detail-body">
+      <div class="description">
+        @for (paragraph of descriptionParagraphs; track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+      </div>
+
+      @if (project.highlights && project.highlights.length) {
+        <div class="highlights">
+          <h2>Highlights</h2>
+          <div class="highlight-list">
+            @for (h of project.highlights; track h.title) {
+              <div class="highlight-item card">
+                <h3>{{ h.title }}</h3>
+                <p>{{ h.description }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+} @else {
+  <section class="page-section container not-found">
+    <p class="eyebrow">404</p>
+    <h1>Project not found</h1>
+    <p>That project doesn't exist — it may have been renamed or removed.</p>
+    <a routerLink="/projects" class="btn btn-primary">Back to Projects</a>
+  </section>
+}
