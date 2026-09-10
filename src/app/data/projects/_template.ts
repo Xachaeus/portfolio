@@ -22,6 +22,12 @@ export const template: Project = {
       description: 'Describe a notable feature or technical challenge you solved.',
     },
   ],
+  conciseHighlights: [
+    {
+      title: 'Key feature',
+      description: 'Describe a notable feature or technical challenge you solved.',
+    },
+  ],
   date: '2024-01-01',
   featured: false,
   status: 'completed', // Can be 'active', 'completed', 'archived', 'in-progress', or undefined

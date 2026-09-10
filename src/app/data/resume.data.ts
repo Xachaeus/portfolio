@@ -9,7 +9,7 @@ export const resumeData: ResumeData = {
     'Highly-experienced developer and researcher with a deep passion for all things computer-related. ' +
     'I\'ve been programming since I was seven, and have been building projects for fun ever since. ' +
     'I like to work on novel and original implementations - I prefer to build projects that have nothing ' +
-    'to reference and pose design challenges by their very nature.',
+    'to reference and pose interesting design challenges by their very nature.',
   location: 'Newark, DE',
   email: 'zack.sollenberger@gmail.com',
   links: [

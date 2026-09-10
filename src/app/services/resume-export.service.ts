@@ -106,7 +106,7 @@ const TIERS: Tier[] = [
     sectionSpacingBefore: 90,
     lineSpacing: 216,
     maxAchievements: 2,
-    maxHighlights: 1,
+    maxHighlights: 2,
     maxProjects: 4,
     showTechnologies: false,
   },
@@ -136,7 +136,7 @@ export class ResumeExportService {
         for (const p of featured) {
             score += 1.3;
             score += Math.ceil(p.tagline.length / 100);
-            score += (p.highlights?.length ?? 0) * 0.8;
+            score += (p.conciseHighlights?.length ?? 0) * 0.8;
             score += p.technologies.length ? 0.5 : 0;
         }
 
@@ -375,25 +375,36 @@ export class ResumeExportService {
                 ],
             })
             );
-            const highlights = (p.highlights ?? []).slice(0, tier.maxHighlights);
+            const highlights = (p.conciseHighlights ?? []).slice(0, tier.maxHighlights);
             for (const h of highlights) {
             out.push(this.bulletParagraph(`${h.title}: ${h.description}`, tier));
             }
             const metaBits: string[] = [];
             if (tier.showTechnologies && p.technologies.length) {
-            metaBits.push(p.technologies.join(", "));
+                metaBits.push(p.technologies.join(", "));
             }
             if (metaBits.length) {
-            out.push(
-                new Paragraph({
-                spacing: { after: tier.paraSpacingAfter },
-                children: [this.metaLine(metaBits.join("  ·  "), tier)],
-                })
-            );
+                out.push(
+                    new Paragraph({
+                    spacing: { after: tier.paraSpacingAfter },
+                    children: [this.metaLine(metaBits.join("  ·  "), tier)],
+                    })
+                );
             } else {
-            out.push(new Paragraph({ spacing: { after: tier.paraSpacingAfter }, children: [] }));
+                out.push(new Paragraph({ spacing: { after: tier.paraSpacingAfter }, children: [] }));
             }
         }
+
+        out.push(new Paragraph({ 
+            spacing: { after: tier.paraSpacingAfter }, 
+            children: [
+                new TextRun({
+                    text: 'To see more of my projects, check out my portfolio at xachaeus.com!', 
+                    size: tier.bodySize, 
+                    color: this.COLORS.muted 
+                })
+            ] 
+        }));
         return out;
     }
 

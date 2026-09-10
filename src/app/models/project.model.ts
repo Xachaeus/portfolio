@@ -45,6 +45,8 @@ export interface Project {
   /** Optional list of key features / highlights */
   highlights?: ProjectHighlight[];
 
+  conciseHighlights?: ProjectHighlight[];
+
   /** ISO date string (YYYY-MM-DD) representing when the project started or was most recently worked on */
   date: string;
 

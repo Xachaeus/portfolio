@@ -15,11 +15,11 @@ export const autoPortfolio: Project = {
     "the site keeps updated on my GitHub activity and automatically creates, updates, and deploys pages on " +
     "this site to keep you up-to-date, all without needing any input from me.",
   technologies: ['TypeScript', 'Angular', "Nginx", "Headscale", "Tailscale", "Webhooks", "Git", "vLLM", "DGX Spark"],
-  githubUrl: 'https://github.com/Xachaeus/your-repo',
+  githubUrl: 'https://github.com/Xachaeus/portfolio',
   links: [],
   highlights: [
     {
-      title: 'Network Configuration',
+      title: 'Network/Hardware Configuration',
       description: 'The site is powered by a whole suite of network setups that I had to put into place before ' +
       'it would even be feasible. The process for performing the page updates has to live on a computer somewhere, ' +
       'so I set it up on SF9, my personal cluster. It also has to receive webhook requests from GitHub, so I configured ' +
@@ -38,6 +38,24 @@ export const autoPortfolio: Project = {
       'finishes making changes to the git repository, the changes are pushed, and another webhook triggers a build process on ' +
       'CloudFlare Pages. Since the website is static, the build process is all that is necessary, so the built files are rapidly ' +
       'distributed across CloudFlare\'s global network.'
+    }
+  ],
+  conciseHighlights: [
+    {
+      title: 'Self-Updating',
+      description: 'Whenever I begin a new project or update an existing one, site detects the change and automatically updates itself'
+    },
+    {
+      title: 'Hardware Configuration',
+      description: 'Powered by my personal cluster, which includes a DGX Spark'
+    },
+    {
+      title: 'Network Configuration',
+      description: `Utilizes Nginx reverse-proxy, GitHub webhooks, and Headscale/Tailscale to securely process events`
+    },
+    {
+      title: 'CI/CD',
+      description: 'CI/CD configuration allows changes to be deployed to CloudFlare Pages automatically'
     }
   ],
   date: '2026-09-08',
