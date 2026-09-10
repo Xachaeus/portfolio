@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { resumeData } from '../../data/resume.data';
 import { ResumeData } from '../../models/resume.model';
+import { ProjectService } from '../../services/project.service';
+import { ResumeExportService } from '../../services/resume-export.service';
 
 @Component({
   selector: 'app-resume',
@@ -12,6 +14,9 @@ import { ResumeData } from '../../models/resume.model';
 })
 export class ResumeComponent {
   resume: ResumeData = resumeData;
+
+  resumeExportService = inject(ResumeExportService);
+  projectService = inject(ProjectService);
 
   formatRange(start: string, end?: string): string {
     const fmt = (d: string) => {
@@ -24,5 +29,9 @@ export class ResumeComponent {
 
   formatAuthors(authors: string[]) {
     return authors.join(', ');
+  }
+
+  async generateResume() {
+    await this.resumeExportService.generateResumeDocx(this.resume, this.projectService.getAll(), "Zachariah-Sollenberger-Resume.docx");
   }
 }
