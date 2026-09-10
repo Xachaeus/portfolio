@@ -274,10 +274,10 @@ export class ResumeExportService {
         pushSep();
         contactBits.push(
             new ExternalHyperlink({
-                link: 'https://xachaeus.com',
+                link: 'https://zacksoll.com',
                 children: [
                     new TextRun({
-                        text: "Portfolio: xachaeus.com",
+                        text: "Portfolio: zacksoll.com",
                         size: tier.bodySize,
                         color: this.COLORS.link,
                         underline: {},
@@ -399,7 +399,7 @@ export class ResumeExportService {
             spacing: { after: tier.paraSpacingAfter }, 
             children: [
                 new TextRun({
-                    text: 'To see more of my projects, check out my portfolio at xachaeus.com!', 
+                    text: 'To see more of my projects, check out my portfolio at zacksoll.com!', 
                     size: tier.bodySize, 
                     color: this.COLORS.muted 
                 })
