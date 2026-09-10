@@ -50,12 +50,27 @@
 
   --transition-fast: 150ms ease;
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing scale — reduces on mobile via media query below */
+  --space-section: 64px;
+  --space-container: 24px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-section: 40px;
+    --space-container: 16px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
 }
 
 /* ==========================================================================
    Reset & base
    ========================================================================== */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -74,6 +89,8 @@ body {
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
+  /* Prevent horizontal overflow on mobile */
+  overflow-x: hidden;
 }
 
 h1,
@@ -85,6 +102,8 @@ h4 {
   line-height: 1.2;
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
+  /* Prevent orphaned words on narrow screens */
+  text-wrap: balance;
 }
 
 p {
@@ -105,6 +124,12 @@ a:hover {
 code,
 pre {
   font-family: var(--font-mono);
+}
+
+/* Prevent long unbreakable strings from blowing out mobile layouts */
+pre, code {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 ::selection {
@@ -134,11 +159,11 @@ pre {
 .container {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-container);
 }
 
 .page-section {
-  padding: 64px 0;
+  padding: var(--space-section) var(--space-container);
 }
 
 .eyebrow {
@@ -153,27 +178,41 @@ pre {
   margin-bottom: 12px;
 }
 
-.eyebrow::before, .eyebrow::after {
+.eyebrow::before,
+.eyebrow::after {
   content: '';
   width: 14px;
   height: 1px;
   background: var(--accent-500);
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.92rem;
+  /* Minimum 44px touch target height on mobile */
   padding: 11px 20px;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-fast);
   text-decoration: none;
+  /* Prevent text from wrapping inside buttons */
+  white-space: nowrap;
+}
+
+/* On mobile, let buttons fill available width when stacked */
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+  }
 }
 
 .btn-primary {
@@ -186,6 +225,13 @@ pre {
   filter: brightness(1.08);
   color: #06120d;
   transform: translateY(-1px);
+}
+
+/* Disable hover transform on touch devices to avoid sticky states */
+@media (hover: none) {
+  .btn-primary:hover {
+    transform: none;
+  }
 }
 
 .btn-secondary {
@@ -206,17 +252,23 @@ pre {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   transition: border-color var(--transition-base), transform var(--transition-base);
+  /* Ensure cards don't overflow their container */
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .tag {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  /* Slightly taller on mobile for easier reading */
   padding: 4px 10px;
   border-radius: 999px;
   background: rgba(78, 203, 143, 0.1);
   color: var(--accent-300);
   border: 1px solid rgba(78, 203, 143, 0.25);
+  /* Tags shouldn't wrap their own text */
+  white-space: nowrap;
 }
 
 .section-heading {
@@ -228,8 +280,18 @@ pre {
   flex-wrap: wrap;
 }
 
+/* On mobile, stack heading and any "see all" link rather than squishing them */
+@media (max-width: 480px) {
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+}
+
 .section-heading h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.3rem, 5vw, 2rem);
   margin: 0;
 }
 
@@ -239,4 +301,16 @@ pre {
 
 .mono {
   font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   Reduced-motion preference
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

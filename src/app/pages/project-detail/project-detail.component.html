@@ -1,5 +1,5 @@
 @if (project) {
-  <section class="page-section container">
+  <div class="page-section container">
     <a routerLink="/projects" class="back-link">← All projects</a>
 
     <div class="detail-header">
@@ -48,12 +48,12 @@
         </div>
       }
     </div>
-  </section>
+  </div>
 } @else {
-  <section class="page-section container not-found">
+  <div class="page-section container not-found">
     <p class="eyebrow">404</p>
     <h1>Project not found</h1>
     <p>That project doesn't exist — it may have been renamed or removed.</p>
     <a routerLink="/projects" class="btn btn-primary">Back to Projects</a>
-  </section>
+  </div>
 }
