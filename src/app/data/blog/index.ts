@@ -1,6 +1,7 @@
 import { BlogPost } from '../../models/blog-post.model';
 import { whyIRebuiltMySite } from './why-i-rebuilt-my-site';
+import { waitingOnProjects } from './waiting-on-projects';
 
 // Register every blog post file here. Order doesn't matter — the site
 // sorts by date automatically.
-export const blogPosts: BlogPost[] = [whyIRebuiltMySite];
+export const blogPosts: BlogPost[] = [whyIRebuiltMySite, waitingOnProjects];
