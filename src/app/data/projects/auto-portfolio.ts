@@ -1,9 +1,5 @@
 import { Project } from '../../models/project.model';
 
-// COPY THIS FILE to create a new project entry.
-// Rename it to something like `my-cool-app.ts`, fill in the fields,
-// then import + add it to the `projects` array in `index.ts`.
-
 export const autoPortfolio: Project = {
   slug: 'auto-portfolio',
   name: 'Self-Updating Portfolio',

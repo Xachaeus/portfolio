@@ -1,9 +1,5 @@
 import { Project } from '../../models/project.model';
 
-// COPY THIS FILE to create a new project entry.
-// Rename it to something like `my-cool-app.ts`, fill in the fields,
-// then import + add it to the `projects` array in `index.ts`.
-
 export const solos: Project = {
   slug: 'sol-os',
   name: 'SolOS: 32-bit x86 OS Built from Scratch',
@@ -24,7 +20,7 @@ export const solos: Project = {
   highlights: [
     {
       title: 'Program Loading',
-      description: 
+      description:
         `The repository includes a special static library that enables programs to be cross-compiled for use with SolOS. This library \
         defines several system calls and maps them to an appropriate interrupt structure for SolOS (which is designed to mimic the Linux \
         system calling convention). These compiled binaries can then be loaded into the virtual floppy disk image that SolOS reads from. \
@@ -33,7 +29,7 @@ export const solos: Project = {
     },
     {
       title: 'Custom Bootloader',
-      description: 
+      description:
         `I wrote a custom, dedicated bootloader for SolOS in order to understand exactly how code begins running after boot. The bootloader is \
         two-stage, with the first stage only loading the second stage from the floppy disk and passing control to it, and the second stage \
         loading the kernel and putting the CPU into 32-bit Protected Mode. The reason a virtual floppy was chosen instead of a virtual hard disk \
