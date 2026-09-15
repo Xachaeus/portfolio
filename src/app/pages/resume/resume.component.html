@@ -122,7 +122,10 @@
                 <div class="job-header">
                   <div>
                     <h3>{{ edu.degree }}</h3>
-                    <p class="org">{{ edu.institution }}@if (edu.location) { <span class="text-muted"> · {{ edu.location }}</span> }</p>
+                    <p class="org">{{ edu.institution }}
+                      @if (edu.location) { <span class="text-muted"> · {{ edu.location }}</span> }
+                      @if (edu.gpa) { <span class="text-muted"> · Cum. GPA: {{ edu.gpa }}</span> }
+                    </p>
                   </div>
                   <span class="date-range mono">{{ formatRange(edu.startDate, edu.endDate) }}</span>
                 </div>
