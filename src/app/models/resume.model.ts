@@ -23,6 +23,7 @@ export interface PublicationEntry {
 
 export interface EducationEntry {
   degree: string;
+  gpa: string;
   institution: string;
   location?: string;
   startDate: string;
