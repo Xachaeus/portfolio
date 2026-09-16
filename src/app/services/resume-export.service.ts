@@ -13,11 +13,24 @@ import {
   PositionalTab,
   PositionalTabAlignment,
   PositionalTabLeader,
+  Footer,
 } from "docx";
 
 import { Injectable } from '@angular/core';
 import { ExperienceEntry, EducationEntry, PublicationEntry, RecognitionEntry, SkillGroup, ResumeData } from "../models/resume.model";
 import { Project } from "../models/project.model";
+
+
+
+// Utility function for parsing dates
+function dateToYYYY(dateStr: string | undefined): string {
+  if (!dateStr) return "";
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) {
+    return dateStr;
+  }
+  return date.getFullYear().toString();
+}
 
 // ---------------------------------------------------------------------------
 // Tiered layout system
@@ -395,16 +408,6 @@ export class ResumeExportService {
             }
         }
 
-        out.push(new Paragraph({ 
-            spacing: { after: tier.paraSpacingAfter }, 
-            children: [
-                new TextRun({
-                    text: 'To see more of my projects, check out my portfolio at zacksoll.com!', 
-                    size: tier.bodySize, 
-                    color: this.COLORS.muted 
-                })
-            ] 
-        }));
         return out;
     }
 
@@ -418,7 +421,7 @@ export class ResumeExportService {
                 tabStops: [{ type: "right" as const, position: 9350 }],
                 children: [
                 new TextRun({ text: ed.degree, bold: true, size: tier.bodySize, color: this.COLORS.heading }),
-                new TextRun({ text: `  —  ${ed.institution}`, size: tier.bodySize, color: this.COLORS.heading }),
+                new TextRun({ text: `  —  ${ed.institution} · ${dateToYYYY(ed.startDate)}-${dateToYYYY(ed.endDate)} · ${ed.gpa} GPA`, size: tier.bodySize, color: this.COLORS.heading }),
                 new TextRun({
                     children: [new Tab()],
                     text: `${this.formatDateRange(ed.startDate, ed.endDate)}${ed.location ? "  ·  " + ed.location : ""}`,
@@ -509,6 +512,21 @@ export class ResumeExportService {
         return out;
     }
 
+    buildFooter(tier: Tier): Paragraph[] {
+        const out: Paragraph = new Paragraph({
+          spacing: { after: tier.paraSpacingAfter - 30, line: tier.lineSpacing },
+          alignment: AlignmentType.CENTER,
+          children: [
+              new TextRun({
+                text: 'For more information about me, check out my portfolio at zacksoll.com!',
+                size: tier.bodySize,
+                color: this.COLORS.muted
+              })
+          ],
+        })
+        return [out];
+    }
+
     // ---------------------------------------------------------------------------
     // Public entry point
     // ---------------------------------------------------------------------------
@@ -547,6 +565,9 @@ export class ResumeExportService {
                 },
                 },
                 children,
+                footers: {
+                  default: new Footer({children: this.buildFooter(tier)})
+                }
             },
             ],
             styles: {
