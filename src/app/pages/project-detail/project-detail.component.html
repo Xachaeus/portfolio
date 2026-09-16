@@ -10,9 +10,11 @@
       </div>
 
       <div class="detail-actions">
-        <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn btn-primary">
-          View on GitHub
-        </a>
+        @if (project.githubUrl) {
+          <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn btn-primary">
+            View on GitHub
+          </a>
+        }
         @for (link of project.links; track link.url) {
           <a [href]="link.url" target="_blank" rel="noopener" class="btn btn-secondary">
             {{ iconFor(link.icon) }} {{ link.label }}

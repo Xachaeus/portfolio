@@ -37,7 +37,7 @@ export interface Project {
   technologies: string[];
 
   /** GitHub repository URL */
-  githubUrl: string;
+  githubUrl?: string;
 
   /** Optional additional links (live demo, docs, etc.) */
   links?: ProjectLink[];
