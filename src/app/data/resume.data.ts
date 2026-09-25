@@ -120,6 +120,12 @@ export const resumeData: ResumeData = {
       institution: "2025 OpenACC Summit",
       date: "2025",
       location: "Virtual"
+    },
+    {
+      title: "Received Best Poster Award at IEEE Cluster 2026",
+      institution: "IEEE Cluster 2026",
+      date: "2026",
+      location: "Alexandria, Virginia"
     }
   ],
 
