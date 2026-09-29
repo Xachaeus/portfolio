@@ -79,12 +79,8 @@ export const resumeData: ResumeData = {
       skills: ['Bash', 'Pthreads', 'MPI', 'Slurm', 'OpenMP', 'CUDA', 'GLSL', 'x86 Assembly', 'ARM Assembly']
     },
     {
-      category: 'Frontend',
-      skills: ['Angular', 'React', 'React Native', 'SCSS', 'Vite'],
-    },
-    {
-      category: 'Backend',
-      skills: ['Node.js', 'PostgreSQL', 'Django', 'Docker', 'REST', 'JWT'],
+      category: 'Full Stack',
+      skills: ['Angular', 'React', 'React Native', 'SCSS', 'Vite', 'Node.js', 'PostgreSQL', 'Django', 'Docker', 'REST', 'JWT']
     },
     {
       category: 'Infrastructure',

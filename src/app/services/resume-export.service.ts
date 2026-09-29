@@ -361,14 +361,12 @@ export class ResumeExportService {
             const achievements = (e.achievements ?? []).slice(0, tier.maxAchievements);
             for (const a of achievements) out.push(this.bulletParagraph(a, tier));
             if (tier.showTechnologies && e.technologies?.length) {
-            out.push(
-                new Paragraph({
-                spacing: { after: tier.paraSpacingAfter },
-                children: [this.metaLine(`Technologies: ${e.technologies.join(", ")}`, tier)],
-                })
-            );
-            } else {
-            out.push(new Paragraph({ spacing: { after: tier.paraSpacingAfter }, children: [] }));
+                out.push(
+                    new Paragraph({
+                    spacing: { after: tier.paraSpacingAfter },
+                    children: [this.metaLine(`Technologies: ${e.technologies.join(", ")}`, tier)],
+                    })
+                );
             }
         }
         return out;
@@ -403,8 +401,6 @@ export class ResumeExportService {
                     children: [this.metaLine(metaBits.join("  ·  "), tier)],
                     })
                 );
-            } else {
-                out.push(new Paragraph({ spacing: { after: tier.paraSpacingAfter }, children: [] }));
             }
         }
 
