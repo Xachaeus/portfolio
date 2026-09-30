@@ -84,7 +84,7 @@ export const resumeData: ResumeData = {
     },
     {
       category: 'Infrastructure',
-      skills: ['AWS', 'CloudFlare', 'GitHub', 'Headscale', 'Tailscale', 'Nginx', 'Samba']
+      skills: ['AWS', 'CloudFlare', 'GitHub', 'Headscale', 'Tailscale', 'Nginx', 'Samba', 'Docker']
     },
     {
       category: 'Practices',
