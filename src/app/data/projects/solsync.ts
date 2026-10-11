@@ -58,6 +58,6 @@ export const solsync: Project = {
     }
   ],
   date: '2026-07-01',
-  featured: false,
+  featured: true,
   status: 'in-progress', // Can be 'active', 'completed', 'archived', 'in-progress', or undefined
 };
