@@ -56,14 +56,6 @@ export const resumeData: ResumeData = {
       startDate: '2023-08',
       endDate: '2027-05',
     },
-    {
-      degree: 'M.S. in Computer Science',
-      institution: 'University of Delaware',
-      gpa: '4.0',
-      location: 'Newark, DE',
-      startDate: '2026-08',
-      endDate: '2028-05',
-    },
   ],
   skills: [
     {
