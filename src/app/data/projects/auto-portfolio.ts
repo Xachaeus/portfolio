@@ -55,6 +55,6 @@ export const autoPortfolio: Project = {
     }
   ],
   date: '2026-09-08',
-  featured: true,
+  featured: false,
   status: 'in-progress',
 };

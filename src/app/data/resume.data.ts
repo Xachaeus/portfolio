@@ -18,6 +18,32 @@ export const resumeData: ResumeData = {
   ],
   experience: [
     {
+      role: 'Founder and Technical Lead',
+      organization: 'Sollenberger Technologies, LLC.',
+      location: 'Newark, DE',
+      startDate: '2026-04',
+      summary:
+        'Founded a software company and personally led its technical direction, from architecture and development through deployment and billing, shipping a production cross-platform product.',
+      achievements: [
+        'Architected and built Kinedaptive end to end: a React Native (Expo) app that ships as both a website and a mobile app from one TypeScript codebase, backed by Supabase (PostgreSQL, Auth, Edge Functions)',
+        'Designed SolSync to enable company staff to trivially monitor compute work being done on remote machines, powered by a self-hosted backend with Nginx and Express',
+        'Designed a security model with on-device client-data encryption and a confidential recommendation algorithm that runs only on the server, with automated tests enforcing the boundary',
+        'Integrated Stripe subscriptions, webhooks, invoicing, and admin-built organization pricing, evolving the schema of a live app through additive migrations',
+        'Established the engineering standards that keep the codebase maintainable: typed non-throwing service layers, per-folder documentation, centralized content constants, and automated test suites',
+      ],
+      technologies: [
+        'TypeScript',
+        'Angular',
+        'React Native',
+        'Expo',
+        'Supabase',
+        'PostgreSQL',
+        'Stripe',
+        'Edge Functions',
+        'System Architecture',
+      ],
+    },
+    {
       role: 'Tech Lead Intern',
       organization: 'AlignNX, Inc.',
       location: 'Wilmington, DE',

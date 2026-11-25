@@ -7,7 +7,8 @@ import { bulletHellGame } from './bulletHell';
 import { solos } from './solos';
 import { AlignNX } from './alignnx';
 import { solsync } from './solsync';
+import { kinedaptive } from './kinedaptive';
 
 // Register every project file here. Order doesn't matter — the site
 // sorts by date automatically.
-export const projects: Project[] = [solos, autoPortfolio, nTea, multicyclePipelinedRiscVCpu, minecraftShaders, bulletHellGame, AlignNX, solsync];
+export const projects: Project[] = [kinedaptive, solos, autoPortfolio, nTea, multicyclePipelinedRiscVCpu, minecraftShaders, bulletHellGame, AlignNX, solsync];

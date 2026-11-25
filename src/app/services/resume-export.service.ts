@@ -120,7 +120,7 @@ const TIERS: Tier[] = [
     lineSpacing: 216,
     maxAchievements: 3,
     maxHighlights: 3,
-    maxProjects: 4,
+    maxProjects: 3,
     showTechnologies: false,
   },
 ];
